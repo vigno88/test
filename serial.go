@@ -23,7 +23,7 @@ func main() {
 	mode := &serial.Mode{
 		BaudRate: 9600,
 	}
-	port, err := serial.Open("/dev/serial1", mode)
+	port, err := serial.Open("/dev/serial0", mode)
 	if err != nil {
 		log.Fatal(err)
 	}
