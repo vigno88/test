@@ -4,21 +4,20 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/tarm/serial"
+	"go.bug.st/serial.v1"
 )
 
 func main() {
-	c := &serial.Config{Name: "/dev/serial1", Baud: 9600}
-	s, err := serial.OpenPort(c)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("port open")
 
-	_, err = s.Write([]byte("test"))
+	ports, err := serial.GetPortsList()
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("message sent")
+	if len(ports) == 0 {
+		log.Fatal("No serial ports found!")
+	}
+	for _, port := range ports {
+		fmt.Printf("Found port: %v\n", port)
+	}
 
 }
