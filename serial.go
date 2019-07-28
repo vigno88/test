@@ -14,12 +14,11 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("port open")
-	
+
 	_, err = s.Write([]byte("test"))
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("message sent")
-
 
 }
