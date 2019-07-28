@@ -23,9 +23,15 @@ func main() {
 	mode := &serial.Mode{
 		BaudRate: 9600,
 	}
-	_, err = serial.Open("/dev/ttyAMA0", mode)
+	port , err := serial.Open("/dev/ttyAMA0", mode)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	n, err := port.Write([]byte("10,20,30\n\r"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Sent %v bytes\n", n)
 
 }
