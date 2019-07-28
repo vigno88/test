@@ -34,4 +34,18 @@ func main() {
 	}
 	fmt.Printf("Sent %v bytes\n", n)
 
+	buff := make([]byte, 100)
+	for {
+		n, err := port.Read(buff)
+		if err != nil {
+			log.Fatal(err)
+			break
+		}
+		if n == 0 {
+			fmt.Println("\nEOF")
+			break
+		}
+		fmt.Printf("%v", string(buff[:n]))
+	}
+
 }
