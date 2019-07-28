@@ -20,4 +20,12 @@ func main() {
 		fmt.Printf("Found port: %v\n", port)
 	}
 
+	mode := &serial.Mode{
+		BaudRate: 9600,
+	}
+	_, err = serial.Open("/dev/ttyAMA0", mode)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 }
