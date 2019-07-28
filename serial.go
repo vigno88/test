@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/tarm/serial"
 	"log"
+
+	"github.com/tarm/serial"
 )
 
 func main() {
-	c := &serial.Config{Name: "/dev/serial0", Baud: 9600}
+	c := &serial.Config{Name: "/dev/serial1", Baud: 9600}
 	s, err := serial.OpenPort(c)
 	if err != nil {
 		log.Fatal(err)
@@ -22,4 +23,3 @@ func main() {
 	}
 
 }
-
