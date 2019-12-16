@@ -21,7 +21,7 @@ func main() {
 	}
 
 	mode := &serial.Mode{
-		BaudRate: 9600,
+		BaudRate: 115200,
 	}
 	port, err := serial.Open("/dev/ttyAMA0", mode)
 	if err != nil {
