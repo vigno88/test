@@ -48,5 +48,6 @@ func main() {
 		fmt.Printf("%v", string(buff[:n]))
 
 	}
+	fmt.Println("Salut")
 
 }
