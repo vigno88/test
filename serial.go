@@ -28,7 +28,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	n, err := port.Write([]byte("dsadsadasdasdas\n\r"))
+	n, err := port.Write([]byte("#___CNCON000\n"))
 	if err != nil {
 		log.Fatal(err)
 	}
