@@ -77,6 +77,7 @@ func main() {
 				fmt.Println("XOFF")
 			}
 			if i >= len(gc) {
+				port.Write([]byte("%\n"))
 				break
 			}
 		}
