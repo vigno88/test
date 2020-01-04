@@ -67,7 +67,7 @@ func main() {
 			if resp == "ok\r\n" {
 				printLine = true
 			}
-			if i > 5 {
+			if i > 4 {
 				break
 			}
 		}
