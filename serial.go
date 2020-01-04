@@ -60,24 +60,26 @@ func main() {
 				fmt.Println(gc[i])
 				i++
 			}
-			n, err := serialReader.Read(buff)
-			if err != nil {
-				log.Fatal(err)
-				break
-			}
-			if n == 0 {
-				fmt.Println("\nEOF")
-				break
-			}
-			resp := fmt.Sprintf("%v", string(buff[:n]))
-			fmt.Println(resp)
-			if resp[0] == 19 {
-				printLine =  false
-				fmt.Println("XOFF")
-			}
-			if resp[0] == 17 {
-				printLine = true
-				fmt.Println("XOFF")
+			if serialReader.Buffered() > 0 {
+				n, err := serialReader.Read(buff)
+				if err != nil {
+					log.Fatal(err)
+					break
+				}
+				if n == 0 {
+					fmt.Println("\nEOF")
+					break
+				}
+				resp := fmt.Sprintf("%v", string(buff[:n]))
+				fmt.Println(resp)
+				if resp[0] == 19 {
+					printLine = false
+					fmt.Println("XOFF")
+				}
+				if resp[0] == 17 {
+					printLine = true
+					fmt.Println("XOFF")
+				}
 			}
 			if i >= len(gc) {
 				port.Write([]byte("%\n"))
