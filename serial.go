@@ -37,6 +37,7 @@ func main() {
 	for {
 		if printLine {
 			port.Write([]byte(gc[i]))
+			fmt.Println(gc[i])
 			printLine = false
 			i++
 		}
@@ -54,7 +55,7 @@ func main() {
 		if resp == "ok" {
 			printLine = true
 		}
-		if i > len(gc) {
+		if i > 5 {
 			break
 		}
 
