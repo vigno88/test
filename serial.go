@@ -47,7 +47,7 @@ func main() {
 		gc[5] = "G0X30Y30\n"
 		gc[6] = "G0X-30Y30\n"
 		gc[7] = "G0X-30Y-30\n"
-		gc[8] = "G0X30Y-30\n"
+		gc[8] = "G0X0Y0\n"
 		gc[9] = "G0X0Y0\n"
 
 		printLine := true
