@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"go.bug.st/serial.v1"
 )
@@ -21,7 +22,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Sent %v bytes\n", n)
-
+	time.Sleep(200* time.Millisecond)
 	gc := make([]string,5)
 	gc[0] = "G0X20Y20"
 	gc[1] = "G0X-20Y20"
