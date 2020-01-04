@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"time"
@@ -21,9 +22,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	buff := make([]byte, 100)
+	serialReader := bufio.NewReader(port)
 
-	n, err = port.Read(buff)
+	buff := make([]byte, 100)
+	n, err = serialReader.Read(buff)
 	if err != nil {
 		log.Fatal(err)
 	}
