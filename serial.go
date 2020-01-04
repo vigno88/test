@@ -60,7 +60,7 @@ func main() {
 				fmt.Println(gc[i])
 				i++
 			}
-			n, err := port.Read(buff)
+			n, err := serialReader.Read(buff)
 			if err != nil {
 				log.Fatal(err)
 				break
