@@ -29,7 +29,7 @@ func main() {
 	}
 	resp := fmt.Sprintf("%v", string(buff[:n]))
 	fmt.Println([]byte(resp))
-	if resp == "ok\n" {
+	if resp == "ok\r\n" {
 		n, err := port.Write([]byte("#CNCGCODE000\n"))
 		if err != nil {
 			log.Fatal(err)
@@ -64,7 +64,7 @@ func main() {
 			}
 			resp := fmt.Sprintf("%v", string(buff[:n]))
 			fmt.Println(resp)
-			if resp == "ok" {
+			if resp == "ok\r\n" {
 				printLine = true
 			}
 			if i > 5 {
