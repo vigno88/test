@@ -59,7 +59,7 @@ func main() {
 				port.Write([]byte(gc[i]))
 				fmt.Println(gc[i])
 				i++
-				time.Sleep(200* time.Millisecond)
+				time.Sleep(2000* time.Millisecond)
 				
 			}
 			if serialReader.Buffered() > 0 {
