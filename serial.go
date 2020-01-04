@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 
@@ -9,17 +10,6 @@ import (
 
 func main() {
 
-	ports, err := serial.GetPortsList()
-	if err != nil {
-		log.Fatal(err)
-	}
-	if len(ports) == 0 {
-		log.Fatal("No serial ports found!")
-	}
-	for _, port := range ports {
-		fmt.Printf("Found port: %v\n", port)
-	}
-
 	mode := &serial.Mode{
 		BaudRate: 115200,
 	}
@@ -27,8 +17,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	serialWriter := bufio.NewWriter(port)
 
-	n, err := port.Write([]byte("#___CNCON000\n"))
+	n, err := serialWriter.Write([]byte("#___CNCON000\n"))
 	if err != nil {
 		log.Fatal(err)
 	}
