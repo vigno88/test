@@ -28,7 +28,7 @@ func main() {
 		log.Fatal(err)
 	}
 	resp := fmt.Sprintf("%v", string(buff[:n]))
-	fmt.Println(resp)
+	fmt.Println([]byte(resp))
 	if resp == "ok\n" {
 		n, err := port.Write([]byte("#CNCGCODE000\n"))
 		if err != nil {
