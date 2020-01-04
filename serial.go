@@ -36,12 +36,17 @@ func main() {
 		}
 		fmt.Printf("Sent %v bytes\n", n)
 		time.Sleep(200* time.Millisecond)
-		gc := make([]string,5)
+		gc := make([]string,10)
 		gc[0] = "G0X20Y20\n"
 		gc[1] = "G0X-20Y20\n"
 		gc[2] = "G0X-20Y-20\n"
 		gc[3] = "G0X20Y-20\n"
 		gc[4] = "G0X0Y0\n"
+		gc[5] = "G0X20Y20\n"
+		gc[6] = "G0X-20Y20\n"
+		gc[7] = "G0X-20Y-20\n"
+		gc[8] = "G0X20Y-20\n"
+		gc[9] = "G0X0Y0\n"
 
 		printLine := true
 		i := 0
@@ -50,7 +55,6 @@ func main() {
 			if printLine {
 				port.Write([]byte(gc[i]))
 				fmt.Println(gc[i])
-				printLine = false
 				i++
 			}
 			n, err := port.Read(buff)
@@ -64,10 +68,15 @@ func main() {
 			}
 			resp := fmt.Sprintf("%v", string(buff[:n]))
 			fmt.Println(resp)
-			if resp == "ok\r\n" {
-				printLine = true
+			if resp[0] == 19 {
+				printLine =  false
+				fmt.Println("XOFF")
 			}
-			if i > 4 {
+			if resp[0] == 17 {
+				printLine = true
+				fmt.Println("XOFF")
+			}
+			if i > len(gc) {
 				break
 			}
 		}
