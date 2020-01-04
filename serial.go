@@ -37,11 +37,11 @@ func main() {
 		fmt.Printf("Sent %v bytes\n", n)
 		time.Sleep(200* time.Millisecond)
 		gc := make([]string,5)
-		gc[0] = "G0X20Y20"
-		gc[1] = "G0X-20Y20"
-		gc[2] = "G0X-20Y-20"
-		gc[3] = "G0X20Y-20"
-		gc[4] = "G0X0Y0"
+		gc[0] = "G0X20Y20\n"
+		gc[1] = "G0X-20Y20\n"
+		gc[2] = "G0X-20Y-20\n"
+		gc[3] = "G0X20Y-20\n"
+		gc[4] = "G0X0Y0\n"
 
 		printLine := true
 		i := 0
