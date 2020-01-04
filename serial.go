@@ -37,15 +37,15 @@ func main() {
 		fmt.Printf("Sent %v bytes\n", n)
 		time.Sleep(200* time.Millisecond)
 		gc := make([]string,10)
-		gc[0] = "G0X20Y20\n"
-		gc[1] = "G0X-20Y20\n"
-		gc[2] = "G0X-20Y-20\n"
-		gc[3] = "G0X20Y-20\n"
+		gc[0] = "G0X30Y30\n"
+		gc[1] = "G0X-30Y30\n"
+		gc[2] = "G0X-30Y-30\n"
+		gc[3] = "G0X30Y-30\n"
 		gc[4] = "G0X0Y0\n"
-		gc[5] = "G0X20Y20\n"
-		gc[6] = "G0X-20Y20\n"
-		gc[7] = "G0X-20Y-20\n"
-		gc[8] = "G0X20Y-20\n"
+		gc[5] = "G0X30Y30\n"
+		gc[6] = "G0X-30Y30\n"
+		gc[7] = "G0X-30Y-30\n"
+		gc[8] = "G0X30Y-30\n"
 		gc[9] = "G0X0Y0\n"
 
 		printLine := true
@@ -76,7 +76,7 @@ func main() {
 				printLine = true
 				fmt.Println("XOFF")
 			}
-			if i > len(gc) {
+			if i >= len(gc) {
 				break
 			}
 		}
