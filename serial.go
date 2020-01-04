@@ -52,6 +52,7 @@ func main() {
 		i := 0
 
 		for {
+			fmt.Println("Wait to print")
 			if printLine {
 				port.Write([]byte(gc[i]))
 				fmt.Println(gc[i])
