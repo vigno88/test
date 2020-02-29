@@ -16,6 +16,7 @@ func main() {
 	}
 	port, err := serial.Open("/dev/ttyAMA0", mode)
 	if err != nil {
+		fmt.Println("error opening port")
 		log.Fatal(err)
 	}
 	n, err := port.Write([]byte("#___CNCON000\n"))
@@ -37,8 +38,8 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Printf("Sent %v bytes\n", n)
-		time.Sleep(200* time.Millisecond)
-		gc := make([]string,10)
+		time.Sleep(200 * time.Millisecond)
+		gc := make([]string, 10)
 		gc[0] = "G92X0Y0\n"
 		gc[1] = "G0X-30Y30\n"
 		gc[2] = "G0X-30Y-30\n"
