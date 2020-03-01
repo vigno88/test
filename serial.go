@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"go.bug.st/serial.v1"
+	"go.bug.st/serial"
 )
 
 func main() {
@@ -14,6 +14,18 @@ func main() {
 	mode := &serial.Mode{
 		BaudRate: 115200,
 	}
+	ports, err := serial.GetPortsList()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(ports) == 0 {
+		fmt.Println("No serial ports found!")
+	} else {
+		for _, port := range ports {
+			fmt.Printf("Found port: %v\n", port)
+		}
+	}
+
 	port, err := serial.Open("/dev/ttyAMA0", mode)
 	if err != nil {
 		fmt.Println("error opening port")
