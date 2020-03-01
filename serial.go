@@ -23,10 +23,11 @@ func main() {
 	} else {
 		for _, port := range ports {
 			fmt.Printf("Found port: %v\n", port)
+
 		}
 	}
 
-	port, err := serial.Open("/dev/ttyAMA0", mode)
+	port, err := serial.Open("/dev/ttyS0", mode)
 	if err != nil {
 		fmt.Println("error opening port")
 		log.Fatal(err)
